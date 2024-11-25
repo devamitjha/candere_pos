@@ -8,7 +8,7 @@ export const fetchSearchResults = (userToken, searchTerm, agentCode, storeCode, 
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: 'https://mcstaging.candere.com/rest/V1/pos-productmanagement/productsearch',
+    url: '/api/pos-productmanagement/productsearch',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${userToken}`,

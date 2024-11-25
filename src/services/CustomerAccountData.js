@@ -5,7 +5,7 @@ export const customerAccountData = async (userToken, customerId) => {
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: 'https://mcstaging.candere.com/rest/V1/pos-customermanagement/customeraccountdata',
+    url: '/api/pos-customermanagement/customeraccountdata',
     headers: { 
       'Content-Type': 'application/json', 
       'Authorization': `Bearer ${userToken}`, 

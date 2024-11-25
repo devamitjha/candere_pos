@@ -163,7 +163,7 @@ const Searchbox = () => {
           let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'https://mcstaging.candere.com/rest/V1/pos-customermanagement/checkcustomer',
+            url: '/api/pos-customermanagement/checkcustomer',
             headers: { 
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
@@ -335,7 +335,7 @@ const Searchbox = () => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'https://mcstaging.candere.com/rest/V1/pos-customermanagement/registerSignup',
+                url: '/api/pos-customermanagement/registerSignup',
                 headers: { 
                     'Content-Type': 'application/json', 
                     'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
@@ -381,7 +381,7 @@ const Searchbox = () => {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'https://mcstaging.candere.com/rest/V1/pos-customermanagement/verifyemail',
+            url: '/api/pos-customermanagement/verifyemail',
             headers: { 
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
