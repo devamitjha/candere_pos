@@ -599,7 +599,7 @@ const Searchbox = () => {
                                         onChange={(e) => setsearchCustomer(e.target.value)}
                                     />
                                     <div className="searchBox--input-icon" title="Search">
-                                        <img src={search} alt="Search" className="img-fluid" />
+                                        {/* <img src={search} alt="Search" className="img-fluid" /> */}
                                     </div>
                                 </div>
                             </div>
