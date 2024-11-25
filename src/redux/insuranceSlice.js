@@ -46,7 +46,7 @@ export const applyInsurance = async (customer_id, checked) => {
   const config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: '/graphql', // Ensure this is the correct URL for your API
+    url: ' https://mcstaging.candere.com/graphql', // Ensure this is the correct URL for your API
     headers: {
       'Content-Type': 'application/json',
     },

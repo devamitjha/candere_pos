@@ -104,7 +104,7 @@ const Card = ({ item, className }) => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: '/graphql',
+                url: ' https://mcstaging.candere.com/graphql',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',

@@ -23,7 +23,7 @@ export const setPaymentMethodOnCart = async (cartId, paymentCode, authToken) => 
   const config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: '/graphql',
+    url: ' https://mcstaging.candere.com/graphql',
     headers: { 
       'Content-Type': 'application/json', 
       'Authorization': `Bearer ${authToken}`, 

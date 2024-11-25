@@ -92,7 +92,7 @@ const Pageinfo = (props) => {
     const config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: '/graphql',
+      url: ' https://mcstaging.candere.com/graphql',
       headers: { 
         'Content-Type': 'application/json', 
         'Authorization': `Bearer ${token}`

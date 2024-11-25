@@ -21,7 +21,7 @@ export const createPosOrder = async (cartId) => {
   const config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: '/graphql',
+    url: ' https://mcstaging.candere.com/graphql',
     headers: { 
       'Content-Type': 'application/json', 
     },
