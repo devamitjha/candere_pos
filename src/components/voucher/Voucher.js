@@ -41,7 +41,7 @@ const Voucher = () => {
         const config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: ' https://mcstaging.candere.com/graphql',
+            url: '/graphql',
             headers: {
               'Content-Type': 'application/json',
             },
@@ -91,7 +91,7 @@ const Voucher = () => {
             let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: ' https://mcstaging.candere.com/graphql',
+            url: '/graphql',
             headers: { 
                 'Content-Type': 'application/json', 
             },
@@ -132,7 +132,7 @@ const Voucher = () => {
             let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: ' https://mcstaging.candere.com/graphql',
+            url: '/graphql',
             headers: { 
                 'Content-Type': 'application/json', 
             },

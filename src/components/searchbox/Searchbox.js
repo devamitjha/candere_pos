@@ -74,7 +74,7 @@ const Searchbox = () => {
             const config = {
               method: 'post',
               maxBodyLength: Infinity,
-              url: ' https://mcstaging.candere.com/graphql',
+              url: '/graphql',
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
@@ -527,7 +527,7 @@ const Searchbox = () => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: ' https://mcstaging.candere.com/graphql',
+                url: '/graphql',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',

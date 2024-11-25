@@ -51,7 +51,7 @@ export const setBillingAddressOnCart = async (cartId, token, address) => {
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: ' https://mcstaging.candere.com/graphql',
+    url: '/graphql',
     headers: { 
       'Content-Type': 'application/json', 
       'Authorization': `Bearer ${token}`

@@ -43,7 +43,7 @@ export const fetchCartData = async (customer_id, agentCodeOrPhone, storeCode) =>
   const config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: ' https://mcstaging.candere.com/graphql',
+    url: '/graphql',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',

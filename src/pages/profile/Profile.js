@@ -164,7 +164,7 @@ const Profile = () => {
         }`,
     });
 
-    axios.post(' https://mcstaging.candere.com/graphql', data, {
+    axios.post('/graphql', data, {
         headers: { 'Content-Type': 'application/json' },
     })
         .then((response) => {
@@ -186,7 +186,7 @@ const Profile = () => {
         variables: { country },
     });
 
-    axios.post(' https://mcstaging.candere.com/graphql', data, {
+    axios.post('/graphql', data, {
         headers: { 'Content-Type': 'application/json' },
     })
         .then((response) => {
@@ -264,7 +264,7 @@ const Profile = () => {
         const config = {
           method: 'post',
           maxBodyLength: Infinity,
-          url: ' https://mcstaging.candere.com/graphql',
+          url: '/graphql',
           headers: { 
             'Content-Type': 'application/json', 
             'Authorization': `Bearer ${token}`
@@ -527,7 +527,7 @@ const Profile = () => {
         const config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: ' https://mcstaging.candere.com/graphql',
+            url: '/graphql',
             headers: { 
                 'Content-Type': 'application/json', 
                 'Authorization': `Bearer ${token}`

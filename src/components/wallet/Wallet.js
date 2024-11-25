@@ -34,7 +34,7 @@ const Wallet = () => {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: ' https://mcstaging.candere.com/graphql',
+        url: '/graphql',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -82,7 +82,7 @@ const Wallet = () => {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: ' https://mcstaging.candere.com/graphql',
+        url: '/graphql',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`, 
@@ -123,7 +123,7 @@ const Wallet = () => {
     const config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: ' https://mcstaging.candere.com/graphql',
+      url: '/graphql',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -173,7 +173,7 @@ const Wallet = () => {
     const config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: ' https://mcstaging.candere.com/graphql',
+      url: '/graphql',
       headers: {
         'Content-Type': 'application/json',
       },
