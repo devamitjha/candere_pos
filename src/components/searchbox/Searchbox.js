@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import search from "../../assets/images/search.svg";
 import remove from "../../assets/images/remove.svg"
@@ -13,13 +12,11 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { addProductSuccess, addProductFailure, setCartCount } from '../../redux/atcSlice';
 import { setUser } from '../../redux/userSlice';
-import SearchedCustomer from "./SearchedCustomer";
 import { cartSummary } from '../../services/CartSummary';
 import { customerAccountData } from '../../services/CustomerAccountData';
 import BarcodeScanner from "../barcode/Barcode";
 import { fetchProducts } from '../../redux/searchSlice';
 import Filter from '../filter/Filter';
-import { setAddresses} from '../../redux/addressSlice'; 
 import { setCustomerAddressData, setLoading, setError } from '../../redux/customerAddressSlice'; // Import actions
 
 
@@ -28,7 +25,6 @@ const Searchbox = () => {
     const dispatch = useDispatch();
     const agent = useSelector((state) => state.agent);
     const { isUser, customer_id, sessionId} = useSelector((state) => state.user);
-    const { token: isUserToken } = useSelector((state) => state.user);
 
     // const isBoxOpen = useSelector((state) => state.customerSearchBox.isBoxOpen);
     const {barcodeData } = useSelector((state) => state.barcode); 
@@ -398,7 +394,7 @@ const Searchbox = () => {
             const successData = response.data.statusCode;          
             console.log("loginverify");
             console.log(response);
-            if(successData == "VALIDMOBILE"){     
+            if(successData === "VALIDMOBILE"){     
             setUserMobile(phone);
             setUserFullName(fullName);
             setUserEmail(customerEmail);
