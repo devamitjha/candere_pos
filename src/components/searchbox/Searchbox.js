@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import search from "../../assets/images/search.svg";
 import remove from "../../assets/images/remove.svg"
@@ -12,11 +13,13 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { addProductSuccess, addProductFailure, setCartCount } from '../../redux/atcSlice';
 import { setUser } from '../../redux/userSlice';
+import SearchedCustomer from "./SearchedCustomer";
 import { cartSummary } from '../../services/CartSummary';
 import { customerAccountData } from '../../services/CustomerAccountData';
 import BarcodeScanner from "../barcode/Barcode";
 import { fetchProducts } from '../../redux/searchSlice';
 import Filter from '../filter/Filter';
+import { setAddresses} from '../../redux/addressSlice'; 
 import { setCustomerAddressData, setLoading, setError } from '../../redux/customerAddressSlice'; // Import actions
 
 
@@ -599,7 +602,7 @@ const Searchbox = () => {
                                         onChange={(e) => setsearchCustomer(e.target.value)}
                                     />
                                     <div className="searchBox--input-icon" title="Search">
-                                        {/* <img src={search} alt="Search" className="img-fluid" /> */}
+                                        <img src={search} alt="Search" className="img-fluid" />
                                     </div>
                                 </div>
                             </div>
