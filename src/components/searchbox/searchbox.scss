@@ -85,8 +85,8 @@
                 border-radius: 999px;
 
                 &:before {
-                    content: "";
-                    background: url('../../assets/images/initial.svg') no-repeat center center;
+                    content: ""; 
+                    //background: url('../../assets/images/initial.svg') no-repeat center center;
                     width: 14px;
                     height: 14px;
                     position: absolute;
