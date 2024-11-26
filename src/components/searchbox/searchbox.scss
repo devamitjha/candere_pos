@@ -174,8 +174,9 @@
 
 // Barcode Frame
 #scanner {
+    width:100vw;
     video {
-        width: 100%;
+        width: 100vw;
         height: 100%;
     }
    
@@ -185,5 +186,6 @@
         right: 0;
         bottom: 0;
         left: 0;
+        width:100vw;
     }
 }
