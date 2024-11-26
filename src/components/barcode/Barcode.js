@@ -83,7 +83,7 @@ function BarcodeScanner() {
         <div
           ref={scannerRef} // Attach ref to this element
           id="scanner"
-          style={{ width: '100vw', height: '320px', marginTop: '20px', position:'relative' }}
+          style={{ width: '720px', height: '320px', marginTop: '20px', position:'relative' }}
         ></div>
       )}
       </>
