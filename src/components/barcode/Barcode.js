@@ -1,3 +1,10 @@
+import React, { useEffect, useRef, useState } from 'react';
+import Quagga from 'quagga';
+import camera from "../../assets/images/camera.svg";
+import { setBarcode } from '../../redux/barcodeSlice';
+import { fetchProducts } from '../../redux/searchSlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 function BarcodeScanner() {
   const dispatch = useDispatch();
   const [scanning, setScanning] = useState(false);
