@@ -32,8 +32,8 @@ function BarcodeScanner() {
             type: 'LiveStream',
             target: scannerRef.current, // Use the ref for the scanner element
             constraints: {
-              width: 730 +"px",
-              height: 320 +"px",
+              width: 730,
+              //height: 320,
               facingMode: 'environment' // Rear camera
             }
           },
@@ -83,7 +83,7 @@ function BarcodeScanner() {
         <div
           ref={scannerRef} // Attach ref to this element
           id="scanner"
-          style={{ width: '730px', height: '320px', marginTop: '20px', position:'relative' }}
+          style={{ width: '100%', height: '100%', marginTop: '20px' }}
         ></div>
       )}
       </>
