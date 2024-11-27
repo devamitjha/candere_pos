@@ -444,15 +444,17 @@ const Searchbox = () => {
     }, [searchProduct, dispatch, agent.storeCode, agent.agentCodeOrPhone, customer_id, barCode]);
 
     const productsList = useSelector((state) => state.search.items);
-    const { loading, error } = useSelector((state) => state.search);
+    const { loading, error, errorCode } = useSelector((state) => state.search);
     const { isAdding, cartCount } = useSelector((state) => state.atc);
 
     // Memoized filtered products
     const filteredProducts = useMemo(() => {
                
         if (!productsList || !Array.isArray(productsList)) {
-            toast.error("OOPS! we cant find your item, you may can try with SKU Code or Product Name");
             return [];
+        }
+        if(errorCode){
+            toast.error(errorCode);
         }
         return productsList.filter((item) => {
             const productNameMatches = item.product_name && item.product_name.toLowerCase().includes(searchProduct.toLowerCase());
