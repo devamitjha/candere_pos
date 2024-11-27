@@ -119,10 +119,10 @@ const Header = () => {
                         </div>
                         <div className="menu--item">
                             <div className="menu--item-left">
-                                <Link to="checkout/cart" onClick={() => dispatch(menuClose())} title='Order History' className='menu--item-text'>Order History</Link>
+                                <Link to="profile" onClick={() => dispatch(menuClose())} title='User Profile' className='menu--item-text'>User Profile</Link>
                             </div>
                             <div className="menu--item-right">
-                                <Link to="checkout/cart" onClick={() => dispatch(menuClose())} title='Order History' className='menu--item-text'>
+                                <Link to="profile" onClick={() => dispatch(menuClose())} title='User Profile' className='menu--item-text'>
                                     <img src={arrow} alt="Next" className='img-fluid' />
                                 </Link>
                             </div>

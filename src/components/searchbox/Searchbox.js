@@ -163,7 +163,7 @@ const Searchbox = () => {
           let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: '/api/pos-customermanagement/checkcustomer',
+            url: '/api/V1/pos-customermanagement/checkcustomer',
             headers: { 
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
