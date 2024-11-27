@@ -410,6 +410,7 @@ const Searchbox = () => {
     //after verifying send it for otp
     useEffect(() => {
         dispatch(cashPaymentPopup(false)); 
+        localStorage.removeItem('offline');
         localStorage.removeItem('methodActive');
         localStorage.removeItem('userBillingAddress')
         localStorage.removeItem("storeBillingAddress");
