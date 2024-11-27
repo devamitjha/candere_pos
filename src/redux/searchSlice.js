@@ -5,7 +5,6 @@ const initialState = {
     items: [],
     loading: false,
     error: null,
-    errorCode:null
 }
 
 const searchSlice = createSlice({
@@ -18,12 +17,11 @@ const searchSlice = createSlice({
         },
         fetchProductsSuccess(state, action) {
             state.items = action.payload;
-            state.loading = false;            
+            state.loading = false;
         },
         fetchProductsFailure(state, action) {
-            state.error = null;
+            state.error = action.payload;
             state.loading = false;
-            state.errorCode = "OOPS! we cant find your item, you may can try with SKU Code or Product Name";
         }
     }
 });
@@ -55,9 +53,7 @@ export const fetchProducts = (searchProduct, storeCode, agentCodeOrPhone, custom
               },
             }
         );
-        if(response.data.status==="error"){
-            dispatch(fetchProductsFailure(response.data.status));
-        }
+
         dispatch(fetchProductsSuccess(response.data.products)); // Save products to the store
     } catch (error) {
         dispatch(fetchProductsFailure(error.message)); // Save the error message to the store
