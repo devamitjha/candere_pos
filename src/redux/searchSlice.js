@@ -21,7 +21,7 @@ const searchSlice = createSlice({
             state.loading = false;            
         },
         fetchProductsFailure(state, action) {
-            state.error = action.payload;
+            state.error = null;
             state.loading = false;
             state.errorCode = "OOPS! we cant find your item, you may can try with SKU Code or Product Name";
         }

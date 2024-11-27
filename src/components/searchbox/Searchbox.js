@@ -444,7 +444,7 @@ const Searchbox = () => {
     }, [searchProduct, dispatch, agent.storeCode, agent.agentCodeOrPhone, customer_id, barCode]);
 
     const productsList = useSelector((state) => state.search.items);
-    const { loading, error, errorCode } = useSelector((state) => state.search);
+    const { loading, errorCode } = useSelector((state) => state.search);
     const { isAdding, cartCount } = useSelector((state) => state.atc);
 
     // Memoized filtered products
@@ -671,7 +671,6 @@ const Searchbox = () => {
                     <BarcodeScanner />
                 </div>               
                     {loading && <p className='searchBox--item-loading'>Loading...</p>}
-                    {error && <p className='searchBox--item-error'>Error: {error}</p>}
                     {filteredProducts.length === 0 ? ("") : (
                         <div className="searchResults-wrapper">
                             {filteredProducts.map((product) => (
