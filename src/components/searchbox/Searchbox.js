@@ -10,7 +10,7 @@ import './searchbox.scss';
 import 'react-spring-bottom-sheet/dist/style.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { addProductSuccess, addProductFailure, setCartCount } from '../../redux/atcSlice';
+import { addProductSuccess, addProductFailure, setCartCount, cashPaymentPopup } from '../../redux/atcSlice';
 import { setUser } from '../../redux/userSlice';
 import { cartSummary } from '../../services/CartSummary';
 import { customerAccountData } from '../../services/CustomerAccountData';
@@ -409,6 +409,7 @@ const Searchbox = () => {
     };
     //after verifying send it for otp
     useEffect(() => {
+        dispatch(cashPaymentPopup(false)); 
         localStorage.removeItem('methodActive');
         localStorage.removeItem('userBillingAddress')
         localStorage.removeItem("storeBillingAddress");

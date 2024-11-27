@@ -10,7 +10,7 @@ import { setCartItems, setLoading, setError } from '../../redux/cartItemSlice';
 import { cartSummary } from '../../services/CartSummary';
 import { setOrderTotal, setError as setOrderSummaryError, setLoading as setOrderSummaryLoading } from '../../redux/orderSummarySlice'; // Import the actions
 import { logoutUser } from '../../redux/userSlice'; 
-import { clearCart, addQuoteId, grandTotal } from '../../redux/atcSlice';
+import { clearCart, addQuoteId, grandTotal, cashPaymentPopup } from '../../redux/atcSlice';
 import { setSelectedAddress } from '../../redux/selectedAddressSlice';
 import { toast } from 'react-toastify';
 import { fetchCartData } from '../../services/fetchCartData';
@@ -52,6 +52,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
+    dispatch(cashPaymentPopup(false)); 
     localStorage.removeItem('methodActive');
     localStorage.removeItem('userBillingAddress')
     localStorage.removeItem("storeBillingAddress");
