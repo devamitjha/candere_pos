@@ -444,7 +444,7 @@ const Searchbox = () => {
     const filteredProducts = useMemo(() => {
                
         if (!productsList || !Array.isArray(productsList)) {
-            console.error("Error: productsList is undefined or not an array");
+            toast.error("OOPS! we cant find your item, you may can try with SKU Code or Product Name");
             return [];
         }
         return productsList.filter((item) => {
