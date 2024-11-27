@@ -74,7 +74,7 @@ const Footer = () => {
       setOrderResponse(response); 
       const juspayURL = response.data.CreatePosOrder.paymentLink;  
       if (cashMethod) {
-        navigate(`success?order_id=${juspayURL}&status=success`);
+        navigate(`success?order_id=${juspayURL}&status=success`, { replace: true });
       }        
     } catch (error) {
       console.error('Failed to create POS order:', error);

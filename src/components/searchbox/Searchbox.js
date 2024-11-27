@@ -409,6 +409,11 @@ const Searchbox = () => {
     };
     //after verifying send it for otp
     useEffect(() => {
+        localStorage.removeItem('methodActive');
+        localStorage.removeItem('userBillingAddress')
+        localStorage.removeItem("storeBillingAddress");
+        localStorage.removeItem('selectedAddress');
+        localStorage.removeItem('isSelectedAddress');
         if (!isUser && userMobile) {
             sendOtp();
         }

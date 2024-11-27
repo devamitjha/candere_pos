@@ -52,6 +52,11 @@ const Cart = () => {
   };
 
   useEffect(() => {
+    localStorage.removeItem('methodActive');
+    localStorage.removeItem('userBillingAddress')
+    localStorage.removeItem("storeBillingAddress");
+    localStorage.removeItem('selectedAddress');
+    localStorage.removeItem('isSelectedAddress');
       loadCartData();
       getCartSummary();
   }, [token, cartCount]);
