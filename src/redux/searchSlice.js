@@ -54,7 +54,7 @@ export const fetchProducts = (searchProduct, storeCode, agentCodeOrPhone, custom
             }
         );
 
-        dispatch(fetchProductsSuccess(response.data)); // Save products to the store
+        dispatch(fetchProductsSuccess(response.data.products)); // Save products to the store
     } catch (error) {
         dispatch(fetchProductsFailure(error.message)); // Save the error message to the store
     }
