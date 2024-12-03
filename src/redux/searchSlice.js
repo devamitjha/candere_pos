@@ -44,7 +44,7 @@ export const fetchProducts = (searchProduct, storeCode, agentCodeOrPhone, custom
               "agentCode": agentCodeOrPhone,
               "customerId": customer_id,
               "searchTerm": searchProduct,
-              "barcode": barCode
+              "barcode": ""
             }),
             {
               headers: { 

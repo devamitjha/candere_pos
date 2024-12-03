@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Quagga from 'quagga';
 import camera from "../../assets/images/camera.svg";
-import { setBarcode } from '../../redux/barcodeSlice';
-import { fetchProducts } from '../../redux/searchSlice';
+import { barcodeSet } from '../../redux/barcodeSlice';
+import { fetchBarcodeProducts } from '../../redux/barcodeSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 function BarcodeScanner() {
@@ -12,6 +12,7 @@ function BarcodeScanner() {
   const [searchProduct, setSearchProduct] = useState('');
   const agent = useSelector((state) => state.agent);
   const { isUser, customer_id } = useSelector((state) => state.user);
+  const barcodeDetectedRef = useRef(false); // Ref to track detection state
 
   const startScanner = async () => {
     const permission = await navigator.permissions.query({ name: 'camera' });
@@ -51,20 +52,28 @@ function BarcodeScanner() {
         );
 
         Quagga.onDetected((data) => {
-          console.log('Barcode detected: ', data.codeResult.code);
-          dispatch(setBarcode(data.codeResult.code));
-          const newBarcode = data.codeResult.code;
-          dispatch(
-            fetchProducts(
-              searchProduct,
-              agent.storeCode,
-              agent.agentCodeOrPhone,
-              customer_id,
-              newBarcode
-            )
-          );
-          Quagga.stop();
-          setScanning(false);
+          if (!barcodeDetectedRef.current) {
+            barcodeDetectedRef.current = true; // Set flag to true
+            console.log('Barcode detected: ', data.codeResult.code);
+            dispatch(barcodeSet(data.codeResult.code));
+            const newBarcode = data.codeResult.code;
+            dispatch(
+              fetchBarcodeProducts(
+                searchProduct,
+                agent.storeCode,
+                agent.agentCodeOrPhone,
+                customer_id,
+                newBarcode
+              )
+            );
+            Quagga.stop();
+            setScanning(false);
+
+            // Reset detection flag after a delay to allow future scans
+            setTimeout(() => {
+              barcodeDetectedRef.current = false;
+            }, 2000); // Adjust the delay as needed
+          }
         });
       }
     }, 300);
