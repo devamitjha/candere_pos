@@ -8,7 +8,7 @@ export const cartSummary = async (userToken, userSession) => {
     url: '/api/default/V1/carts/mine/totals',
     headers: { 
       'Authorization': `Bearer ${userToken}`,
-      // 'Cookie': `PHPSESSID=${userSession}` 
+      'Cookie': `PHPSESSID=${userSession}` 
     }
   };
 
