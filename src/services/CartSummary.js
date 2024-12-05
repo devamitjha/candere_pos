@@ -1,8 +1,13 @@
 import axios from 'axios';
-document.cookie = `PHPSESSID=${userSession}; path=/; Secure`;
 
 // Function to get cart summary using async/await
 export const cartSummary = async (userToken, userSession) => {  
+
+  if (userSession) {
+    document.cookie = `PHPSESSID=${userSession}; path=/; Secure`;
+  }
+
+
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
