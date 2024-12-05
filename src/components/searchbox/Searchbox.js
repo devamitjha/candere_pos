@@ -18,8 +18,7 @@ import BarcodeScanner from "../barcode/Barcode";
 import { fetchProducts } from '../../redux/searchSlice';
 import Filter from '../filter/Filter';
 import { setCustomerAddressData, setLoading, setError } from '../../redux/customerAddressSlice'; // Import actions
-
-
+import { fetchBarcodeProductsFailure, barcodeSet } from '../../redux/barcodeSlice';
 
 const Searchbox = () => {
     const dispatch = useDispatch();
@@ -425,7 +424,7 @@ const Searchbox = () => {
     // Search Results    
     const [searchProduct, setSearchProduct] = useState('');
     const [searchListedProduct, setSearchListedProduct] = useState(null);
-    const [barCode, setBarCode] = useState(barcodeData);
+    const [barCode, setBarCode] = useState("");
 
     
 
@@ -438,20 +437,19 @@ const Searchbox = () => {
     };
 
     useEffect(() => {       
-        if(searchProduct || barCode) {
+        if(searchProduct) {
             dispatch(fetchProducts(searchProduct, agent.storeCode, agent.agentCodeOrPhone, customer_id, barCode))
         }
-    }, [searchProduct, dispatch, agent.storeCode, agent.agentCodeOrPhone, customer_id, barCode]);
+    }, [searchProduct, dispatch, agent.storeCode, agent.agentCodeOrPhone, customer_id]);
 
     const productsList = useSelector((state) => state.search.items);
     const { loading, error } = useSelector((state) => state.search);
     const { isAdding, cartCount } = useSelector((state) => state.atc);
 
     // Memoized filtered products
-    const filteredProducts = useMemo(() => {
-               
+    const filteredProducts = useMemo(() => {               
         if (!productsList || !Array.isArray(productsList)) {
-            toast.error("OOPS! we cant find your item, you may can try with SKU Code or Product Name");
+            console.error("Error: productsList is undefined or not an array");
             return [];
         }
         return productsList.filter((item) => {
@@ -459,10 +457,28 @@ const Searchbox = () => {
             const barCodeMatches = barCode ? item.product_barcode === barCode : true;  
             return productNameMatches || barCodeMatches;
         });
+    }, [searchProduct, productsList]);
 
+    //barcode product search
+    const barCodeProductsList = useSelector((state) => state.barcode.barcodeItems);
+    // Error handling using useEffect
+    useEffect(() => {
+        if (barCodeProductsList.statusCode === "SEARCHERROR") {
+            toast.error("not found");
+            dispatch(fetchBarcodeProductsFailure());
+            dispatch(barcodeSet(""));
+        }
+    }, [barCodeProductsList.statusCode, dispatch]);
 
-
-    }, [searchProduct, productsList, barCode]);
+    // Filtering logic using useMemo
+    const filteredBarcodeProducts = useMemo(() => {
+        const products = barCodeProductsList?.products || [];
+        return products.filter((item) => {
+            const barcodeProductNameMatches = item.product_name?.toLowerCase().includes(searchProduct.toLowerCase());
+            const barCodeMatchesData = barcodeData ? item.product_barcode === barcodeData : true;
+            return barcodeProductNameMatches || barCodeMatchesData;
+        });
+    }, [barCodeProductsList, searchProduct, barcodeData]);
 
     // Handle clicking on a product
     const handleSearchClick = (product) => {
@@ -670,7 +686,7 @@ const Searchbox = () => {
                 </div>               
                     {loading && <p className='searchBox--item-loading'>Loading...</p>}
                     {error && <p className='searchBox--item-error'>Error: {error}</p>}
-                    {filteredProducts.length === 0 ? ("") : (
+                    {filteredProducts.length === 0 || filteredBarcodeProducts === 0 ? ("") : (
                         <div className="searchResults-wrapper">
                             {filteredProducts.map((product) => (
                                 <div className="searchResults" key={product.priorityshipping_id} onClick={() => handleSearchClick(product)}>
