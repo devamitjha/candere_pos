@@ -18,6 +18,7 @@ const Card = ({ item, className }) => {
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
+    const userToken = useSelector((state) => state.user.token);
     const agent = useSelector((state) => state.agent);
     const {isAdding, cartCount} = useSelector((state) => state.atc);
     const error = useSelector((state) => state.atc.error);
@@ -107,7 +108,7 @@ const Card = ({ item, className }) => {
                 url: '/graphql',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
+                    'Authorization': `Bearer ${userToken}`, 
                 },
                 data: data
             };

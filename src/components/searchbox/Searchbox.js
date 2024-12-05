@@ -24,6 +24,7 @@ const Searchbox = () => {
     const dispatch = useDispatch();
     const agent = useSelector((state) => state.agent);
     const { isUser, customer_id, sessionId} = useSelector((state) => state.user);
+    const userToken = useSelector((state) => state.user.token);
 
     // const isBoxOpen = useSelector((state) => state.customerSearchBox.isBoxOpen);
     const {barcodeData } = useSelector((state) => state.barcode); 
@@ -553,7 +554,7 @@ const Searchbox = () => {
                 url: '/graphql',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
+                    'Authorization': `Bearer ${userToken}`,
                 },
                 data: data
             };
