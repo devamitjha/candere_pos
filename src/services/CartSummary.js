@@ -1,4 +1,5 @@
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 // Function to get cart summary using async/await
 export const cartSummary = async (userToken, userSession) => {  
@@ -8,7 +9,7 @@ export const cartSummary = async (userToken, userSession) => {
     url: '/api/default/V1/carts/mine/totals',
     headers: { 
       'Authorization': `Bearer ${userToken}`,
-      'Cookie': `PHPSESSID=${userSession}` 
+     // 'Cookie': `PHPSESSID=${userSession}` 
     }
   };
 
