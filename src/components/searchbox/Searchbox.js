@@ -335,7 +335,7 @@ const Searchbox = () => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: '/api/pos-customermanagement/registerSignup',
+                url: '/rest/V1/pos-customermanagement/registerSignup', 
                 headers: { 
                     'Content-Type': 'application/json', 
                     'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
