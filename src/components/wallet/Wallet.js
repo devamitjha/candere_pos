@@ -110,13 +110,14 @@ const Wallet = () => {
   //promowallet Apply
   const fetchPromoWallet = async () => {
     const data = JSON.stringify({
-      query: `query FetchWalletAmount($input: FetchWalletAmountInput!) {
-        FetchWalletAmount(input: $input) {
-          walletamount
-          status
-          message
-        }
-      }`,
+      query: `query PromoWalletBalance($input: PromoWalletBalanceInput!) 
+              {
+                PromoWalletBalance(input: $input) {
+                  walletamount
+                  status
+                  message
+                }
+              }`,
       variables: { "input": { "customer_id": customer_id } },
     });
   
