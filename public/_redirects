@@ -1,2 +1,2 @@
-/api/*   https://mcstaging.candere.com/rest/:splat   200
-/graphql   https://mcstaging.candere.com/graphql   200
+/api/*   https://www.candere.com/rest/:splat   200
+/graphql   https://www.candere.com/graphql   200
