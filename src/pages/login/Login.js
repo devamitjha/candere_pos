@@ -79,6 +79,7 @@ const handleSubmit = async (event) => {
     const response = await axios.request(config);
 
     if (response.status) {
+      console.log("response login data");
       console.log(response);
       let store_Code = response.data.responseData.store_code;
       let store_name = response.data.responseData.store_details.place_name;
