@@ -112,7 +112,7 @@ const handleSubmit = async (event) => {
       //for agent
 
       dispatch(loginSuccess({ agentCodeOrPhone, store_Code, store_name, store_address, storePinCode, storePhone, city, region, region_id, country_code}));
-      dispatch(setNearbyStores(storesArray));
+      storesArray && dispatch(setNearbyStores(storesArray));
       navigate('/customerdetails');
     } else {
       toast.error('Invalid agent code or PIN');
