@@ -87,8 +87,9 @@ const handleSubmit = async (event) => {
       let storePinCode = response.data.responseData.store_details.zipcode;
       let storePhone = response.data.responseData.store_details.phone;
 
-      let nearbyStore = response.data.responseData.store_details.near_by_stores_data || null;
-      const storesArray = Array.isArray(nearbyStore) ? nearbyStore : Object.values(nearbyStore);
+      let nearbyStore = response.data.responseData.store_details.near_by_stores_data;
+      //const storesArray = Array.isArray(nearbyStore) ? nearbyStore : Object.values(nearbyStore);
+      const storesArray = Array.isArray(nearbyStore) ? nearbyStore : nearbyStore ? Object.values(nearbyStore) : [];
 
       //for agent
         let city=response.data.responseData.store_details.city
