@@ -84,7 +84,6 @@ const List = () => {
   const [activeCategory, setActiveCategory] = useState('');
   const [categoryTitle, setCategoryTitle] = useState('All Jewellery'); 
   const filterProduct = (id, title)=>{
-    alert(id, title);
     setShowCategory(false);
     setCategoryTitle(title);
     fetchProducts(page);
