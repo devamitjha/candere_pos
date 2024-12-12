@@ -67,7 +67,7 @@ const List = () => {
 
     observerRef.current = observer;
     return () => observer.disconnect();
-  }, [productsList, page, categoriesName]);
+  }, [page]);
 
   useEffect(() => {
     fetchProducts(page);
@@ -86,11 +86,11 @@ const List = () => {
   const filterProduct = (id, title)=>{
     setShowCategory(false);
     setCategoryTitle(title);
-    fetchProducts(page);
     setCategoriesName(id);
     setActiveCategory(id);
     dispatch(clearProducts());
     setPage(1);
+    fetchProducts(page);
   }
 
   return (
