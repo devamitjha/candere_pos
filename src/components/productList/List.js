@@ -71,7 +71,7 @@ const List = () => {
 
   useEffect(() => {
     fetchProducts(page);
-  }, [page, categoriesName, selectedStore]);
+  }, [page]);
 
   const [showCategory, setShowCategory] = useState(true);
 
