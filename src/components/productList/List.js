@@ -22,19 +22,24 @@ const List = () => {
   const {customer_id} = useSelector((state) => state.user);
   const selectedStore = useSelector((state) => state.nearbyStore.selectedStore);
   const [categoriesName, setCategoriesName]= useState('');  
+  const [showCategory, setShowCategory] = useState(true);
+  const [activeCategory, setActiveCategory] = useState('');
+  const [categoryTitle, setCategoryTitle] = useState('All Jewellery'); 
+  
 
   const fetchProducts = async (currentPage) =>  {
-    console.log(selectedStore);
     const selectedStoreCode = selectedStore?.code;
     if (lastPageNumber && currentPage > lastPageNumber) return;
     dispatch(setLoading(true)); 
     try {    
-      const productResponseData = await fetchProductsData(selectedStoreCode ? selectedStoreCode : storeCode, agentCodeOrPhone, customer_id, categoriesName, currentPage);      
+      const productResponseData = await fetchProductsData(selectedStoreCode ? selectedStoreCode : storeCode, agentCodeOrPhone, customer_id, categoriesName, currentPage);  
+
       if (productResponseData.data.status === 'success') {
-        dispatch(setProducts(productResponseData.data.products)); 
-        dispatch(setProductType(productResponseData.data.product_types));
-        dispatch(setTotalProducts(productResponseData.data.productCount));
-        setLastPageNumber(productResponseData.data.lastPageNumber); 
+        const { products, product_types, productCount, lastPageNumber } = productResponseData.data;
+        dispatch(setProducts(products));
+        dispatch(setProductType(product_types));
+        dispatch(setTotalProducts(productCount));
+        setLastPageNumber(lastPageNumber);
       }
     } catch (error) {
       console.error('Error Fetching data:', error);
@@ -48,6 +53,18 @@ const List = () => {
       setPage((prevPage) => prevPage + 1);
     }
   };
+
+  useEffect(() => {
+    fetchProducts(page);
+  }, [page,]);
+
+  useEffect(() => {
+    dispatch(clearProducts());
+    setPage(1);
+    fetchProducts(1);
+  }, [categoriesName, selectedStore]);
+
+
 
   useEffect(() => {
     if (observerRef.current) observerRef.current.disconnect();
@@ -67,31 +84,21 @@ const List = () => {
 
     observerRef.current = observer;
     return () => observer.disconnect();
-  }, [productsList, page, categoriesName]);
+  }, [productsList, page]);
 
-  useEffect(() => {
-    fetchProducts(page);
-  }, [page, categoriesName, selectedStore]);
-
-  const [showCategory, setShowCategory] = useState(true);
+  
+  const filterProduct = (id, title)=>{
+    setShowCategory(false);
+    setCategoryTitle(title);
+    setCategoriesName(id);
+    setActiveCategory(id);
+  };
 
   const handleExperienceClick = () => {
     if (!showCategory) {
       setShowCategory(true);
     }
   };
-
-  const [activeCategory, setActiveCategory] = useState('');
-  const [categoryTitle, setCategoryTitle] = useState('All Jewellery'); 
-  const filterProduct = (id, title)=>{
-    setShowCategory(false);
-    setCategoryTitle(title);
-    fetchProducts(page);
-    setCategoriesName(id);
-    setActiveCategory(id);
-    dispatch(clearProducts());
-    setPage(1);
-  }
 
   return (
     <>

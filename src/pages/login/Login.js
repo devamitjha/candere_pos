@@ -66,7 +66,7 @@ const handleSubmit = async (event) => {
 
   let config = {
     method: 'post',
-    url: '/api/V1/pos-agentmanagement/agentlogin',
+    url: '/rest/V1/pos-agentmanagement/agentlogin',
     headers: { 
       'Content-Type': 'application/json', 
       'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
@@ -78,8 +78,7 @@ const handleSubmit = async (event) => {
   try {
     const response = await axios.request(config);
 
-    if (response.data.status==="success") {
-      console.log("response login data");
+    if (response.status) {
       console.log(response);
       let store_Code = response.data.responseData.store_code;
       let store_name = response.data.responseData.store_details.place_name;
@@ -89,7 +88,6 @@ const handleSubmit = async (event) => {
 
       let nearbyStore = response.data.responseData.store_details.near_by_stores_data;
       //const storesArray = Array.isArray(nearbyStore) ? nearbyStore : Object.values(nearbyStore);
-      const storesArray = Array.isArray(nearbyStore) ? nearbyStore : nearbyStore ? Object.values(nearbyStore) : [];
 
       //for agent
         let city=response.data.responseData.store_details.city
@@ -113,7 +111,7 @@ const handleSubmit = async (event) => {
       //for agent
 
       dispatch(loginSuccess({ agentCodeOrPhone, store_Code, store_name, store_address, storePinCode, storePhone, city, region, region_id, country_code}));
-      dispatch(setNearbyStores(storesArray));
+     // dispatch(setNearbyStores(storesArray));
       navigate('/customerdetails');
     } else {
       toast.error('Invalid agent code or PIN');

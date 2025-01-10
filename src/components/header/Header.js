@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import fullLogo from "../../assets/images/full-logo.svg";
 import headerCheckoutBag from "../../assets/images/headerCheckoutBag.svg";
@@ -19,9 +19,13 @@ import { clearCustomerAddressData} from '../../redux/customerAddressSlice';
 import SectionTitle from '../sectionTitle/SectionTitle';
 import StoreAddress from '../storeAddress/StoreAddress';
 // import { toggleBox } from '../../redux/customerSearchBoxSlice';
+import { cartSummary } from '../../services/CartSummary';
+import { setOrderTotal, setError as setOrderSummaryError, setLoading as setOrderSummaryLoading } from '../../redux/orderSummarySlice';
 import "./header.scss";
 
 const Header = () => {
+    const location = useLocation();
+    const { pathname } = location; 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     // const {nearbyStores} = useSelector((state) => state.nearbyStores);
@@ -31,6 +35,7 @@ const Header = () => {
     const {storeName} = useSelector((state) => state.agent);
     const {isSheetOpen, isSheetId} = useSelector((state) => state.bottomSheet);
     const user = useSelector((state) => state.user);
+    const {sessionId} = useSelector((state) => state.user);
     // console.log('Current cartCount:', cartCount);
     // console.log(user);
 
@@ -68,6 +73,17 @@ const Header = () => {
         dispatch(sheetOpen('fetchStore'))
     }
 
+    const refreshCartCount =  async () => {
+        try {
+            dispatch(setOrderSummaryLoading());
+            const cartData = await cartSummary(user.token, sessionId);
+            dispatch(setOrderTotal(cartData)); 
+          } catch (error) {
+            console.error('Error fetching cart summary:', error);
+            dispatch(setOrderSummaryError('Error fetching cart summary'));
+          }
+    }
+
     return (
         <>
             <header className="header">
@@ -89,10 +105,13 @@ const Header = () => {
                                 <p className="header--action-store-name">{selectedStore ? selectedStore.name : `${storeName}`}</p>
                             </div>
 
-                            <Link to="checkout/cart" title="Checkout" className="header--action-child header--action-link">
-                                <img src={headerCheckoutBag} alt="Checkout" className="img-fluid" />                               
-                                <span className='header--action-badge'> {cartCount || "0"}</span>
-                            </Link>
+                            {
+                                pathname !== '/checkout/payment' && 
+                                <Link to="checkout/cart" title="Checkout" className="header--action-child header--action-link" onClick={refreshCartCount}>
+                                    <img src={headerCheckoutBag} alt="Checkout" className="img-fluid" />                               
+                                    <span className='header--action-badge'> {cartCount || "0"}</span>
+                                </Link>
+                            }                            
 
                             {initials ? (
                                 <Link to='/profile' title='Profile' className='header--action-initials'>{initials}</Link>
@@ -119,10 +138,10 @@ const Header = () => {
                         </div>
                         <div className="menu--item">
                             <div className="menu--item-left">
-                                <Link to="profile" onClick={() => dispatch(menuClose())} title='User Profile' className='menu--item-text'>User Profile</Link>
+                                <Link to="checkout/cart" onClick={() => dispatch(menuClose())} title='Order History' className='menu--item-text'>Order History</Link>
                             </div>
                             <div className="menu--item-right">
-                                <Link to="profile" onClick={() => dispatch(menuClose())} title='User Profile' className='menu--item-text'>
+                                <Link to="checkout/cart" onClick={() => dispatch(menuClose())} title='Order History' className='menu--item-text'>
                                     <img src={arrow} alt="Next" className='img-fluid' />
                                 </Link>
                             </div>

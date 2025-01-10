@@ -67,7 +67,7 @@ const Login = () => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: '/api/V1/pos-agentmanagement/agentlogin',
+      url: 'https://mcstaging.candere.com//rest/V1/pos-agentmanagement/agentlogin',
       headers: { 
         'Content-Type': 'application/json', 
         'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',

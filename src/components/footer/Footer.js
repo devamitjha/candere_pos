@@ -74,6 +74,7 @@ const Footer = () => {
       setOrderResponse(response); 
       const juspayURL = response.data.CreatePosOrder.paymentLink;  
       if (cashMethod) {
+        console.log('Navigating to success page...');
         navigate(`success?order_id=${juspayURL}&status=success`, { replace: true });
       }        
     } catch (error) {

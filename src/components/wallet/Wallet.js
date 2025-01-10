@@ -135,7 +135,7 @@ const Wallet = () => {
       const response = await axios.request(config);
       console.log("***promowallet amount****");
       console.log(JSON.stringify(response.data));
-      const promoWalletBalance = response.data.data.PromoWalletBalance.walletamount;
+      const promoWalletBalance = response.data.data.FetchWalletAmount.walletamount;
       console.log(promoWalletBalance);
       setPromoWalletAmount(promoWalletBalance);
     } catch (error) {

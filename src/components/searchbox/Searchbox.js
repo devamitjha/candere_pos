@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import search from "../../assets/images/search.svg";
 import remove from "../../assets/images/remove.svg"
@@ -12,19 +13,23 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { addProductSuccess, addProductFailure, setCartCount, cashPaymentPopup } from '../../redux/atcSlice';
 import { setUser } from '../../redux/userSlice';
+import SearchedCustomer from "./SearchedCustomer";
 import { cartSummary } from '../../services/CartSummary';
 import { customerAccountData } from '../../services/CustomerAccountData';
 import BarcodeScanner from "../barcode/Barcode";
 import { fetchProducts } from '../../redux/searchSlice';
-import Filter from '../filter/Filter';
-import { setCustomerAddressData, setLoading, setError } from '../../redux/customerAddressSlice'; // Import actions
 import { fetchBarcodeProductsFailure, barcodeSet } from '../../redux/barcodeSlice';
+import Filter from '../filter/Filter';
+import { setAddresses} from '../../redux/addressSlice'; 
+import { setCustomerAddressData, setLoading, setError } from '../../redux/customerAddressSlice'; // Import actions
+
+
 
 const Searchbox = () => {
     const dispatch = useDispatch();
     const agent = useSelector((state) => state.agent);
     const { isUser, customer_id, sessionId} = useSelector((state) => state.user);
-    const userToken = useSelector((state) => state.user.token);
+    const { token: isUserToken } = useSelector((state) => state.user);
 
     // const isBoxOpen = useSelector((state) => state.customerSearchBox.isBoxOpen);
     const {barcodeData } = useSelector((state) => state.barcode); 
@@ -163,7 +168,7 @@ const Searchbox = () => {
           let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: '/api/V1/pos-customermanagement/checkcustomer',
+            url: '/rest/V1/pos-customermanagement/checkcustomer',
             headers: { 
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
@@ -335,7 +340,7 @@ const Searchbox = () => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: '/api/V1/pos-customermanagement/registerSignup', 
+                url: '/rest/V1/pos-customermanagement/registerSignup',
                 headers: { 
                     'Content-Type': 'application/json', 
                     'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
@@ -381,7 +386,7 @@ const Searchbox = () => {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: '/api/V1/pos-customermanagement/verifyemail',
+            url: '/rest/V1/pos-customermanagement/verifyemail',
             headers: { 
             'Content-Type': 'application/json', 
             'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
@@ -394,7 +399,7 @@ const Searchbox = () => {
             const successData = response.data.statusCode;          
             console.log("loginverify");
             console.log(response);
-            if(successData === "VALIDMOBILE"){     
+            if(successData == "VALIDMOBILE"){     
             setUserMobile(phone);
             setUserFullName(fullName);
             setUserEmail(customerEmail);
@@ -409,8 +414,7 @@ const Searchbox = () => {
     };
     //after verifying send it for otp
     useEffect(() => {
-        dispatch(cashPaymentPopup(false)); 
-        localStorage.removeItem('offline');
+        //dispatch(cashPaymentPopup(true)); 
         localStorage.removeItem('methodActive');
         localStorage.removeItem('userBillingAddress')
         localStorage.removeItem("storeBillingAddress");
@@ -554,7 +558,7 @@ const Searchbox = () => {
                 url: '/graphql',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${userToken}`,
+                    'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
                 },
                 data: data
             };

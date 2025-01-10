@@ -38,7 +38,7 @@ export const fetchProducts = (searchProduct, storeCode, agentCodeOrPhone, custom
 
     try {
         const response = await axios.post(
-            '/api/V1/pos-productmanagement/productsearch',
+            '/rest/V1/pos-productmanagement/productsearch',
             JSON.stringify({
               "storeCode": storeCode,
               "agentCode": agentCodeOrPhone,

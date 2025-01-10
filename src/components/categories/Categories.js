@@ -34,7 +34,7 @@ const Categories = ({ filterProduct}) => {
             <div className="categories--listing">
                 {productCategories.map((item, index) => {
                     return (
-                        <div key={index} className="categories--item"  onClick={() => filterProduct(item.value, item.title)} title={item.value}>
+                        <div key={index} className="categories--item"  onClick={() => filterProduct(item.value, item.title)}>
                             <img src={item.image} alt={item.title} className="img-fluid categories--item-image" />
                             <div className="categories--item-content">
                                 <span className="categories--item-content-count">{item.count}</span>

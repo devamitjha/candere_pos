@@ -44,7 +44,15 @@ const Card = ({ item, className }) => {
         dispatch(sheetOpen('customerSearchBox'));
     }
 
-    const addProductToCart = async (item) => {     
+    //atc data
+//     query: `mutation{\nAddJewelleryProductToCart(input:{\nproduct:\"${product}\"\nselected_configurable_option:\"${selected_configurable_option}"\nrelated_product:\"${related_product}"\nitem:\"${item}\"\nform_key:\"${form_key}\"\nmetal_id:\"${metal_id}\"\npurity_id:\"${purity_id}\"\nclarity_id:\"${clarity_id}\"\nsize_id:\"${size_id}"\nmetal:\"${metal} \"\npurity:\"${purity}\"\nclarity:\"${clarity}\"\nstone_details:\"${stone_details}\"\ngemstone_details:\"${gemstone_details}"\nzirconia_details:\"${zirconia_details}"\nothermaterial_details:\"${othermaterial_details}"\nmetal_size:\"${metal_size}"\ngemstone:\"${gemstone}"\nzirconia:\"${zirconia}"\nengrave_text:\"${engrave_text}"\nengrave_font:\"${engrave_font}"\nmetal_weight:\"${metal_weight}\"\nstone_weight:\"${stone_weight}\"\ngemstone_weight:\"${gemstone_weight}\"\nzirconia_weight:\"${zirconia_weight}\"\nothermaterial_weight:\"${othermaterial_weight}\"\ntotal_weight:\"${total_weight}\"\ncustom_sku:\"${custom_sku}\"\nnecklace_length:\"${necklace_length}"\nproduct_id:\"${product_id}\"\npriorityshipping_id:\"${priorityshipping_id}\"\nis_priority_shipping:\"${is_priority_shipping}\"\nqty:\"${qty}\"\nprice_before_discount:\"${price_before_discount}\"\nprice_after_discount:\"${price_after_discount}\"\ngold_rate:\"${gold_rate}\"\nemail:\"${email}"\ntelephone:\"${telephone}"\n  })\n  {\n    message\n    status\n quote_mask_id\n  }\n  }`,
+//     variables: {}
+//   });
+
+//
+
+    const addProductToCart = async (item) => {  
+        console.log(item)   ;
         try {
             dispatch(addProductStart());    
             let data = JSON.stringify({
@@ -84,8 +92,8 @@ const Card = ({ item, className }) => {
                         priorityshipping_id: "${item.priorityshipping_id || 0}",
                         is_priority_shipping: "1",
                         qty: ${item.qty},
-                        price_before_discount: "",
-                        price_after_discount: "",
+                        price_before_discount: "${item.product_data.price || 0}",
+                        price_after_discount: "${item.product_data.discount_applied_price || 0}",
                         gold_rate: "",
                         email: "",
                         telephone: "",
