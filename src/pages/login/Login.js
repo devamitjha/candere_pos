@@ -69,7 +69,7 @@ const handleSubmit = async (event) => {
     url: '/api/V1/pos-agentmanagement/agentlogin',
     headers: { 
       'Content-Type': 'application/json', 
-      'Authorization': 'Bearer rfu5fspn4e8o97zqls7batatdjvq2c77',
+      'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
     },
     withCredentials: true,
     data: data

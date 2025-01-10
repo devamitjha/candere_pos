@@ -53,7 +53,7 @@ export const fetchBarcodeProducts = (searchProduct, storeCode, agentCodeOrPhone,
           {
             headers: { 
                 'Content-Type': 'application/json', 
-                'Authorization': 'Bearer rfu5fspn4e8o97zqls7batatdjvq2c77', 
+                'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
             },
           }
       );
