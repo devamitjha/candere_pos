@@ -8,7 +8,7 @@ export const fetchProductsData = async (storeCode, agentCodeOrPhone, customer_id
     url: '/api/V1/pos-productmanagement/getproducts',
     headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
+        Authorization: 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta',
     },
     data: JSON.stringify({
         storeCode:storeCode ,
