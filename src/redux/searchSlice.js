@@ -49,7 +49,7 @@ export const fetchProducts = (searchProduct, storeCode, agentCodeOrPhone, custom
             {
               headers: { 
                   'Content-Type': 'application/json', 
-                  'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
+                  'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta', 
               },
             }
         );

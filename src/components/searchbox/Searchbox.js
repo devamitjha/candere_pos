@@ -82,7 +82,7 @@ const Searchbox = () => {
               url: '/graphql',
               headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
+                'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta',
               },
               data: data
             };
@@ -171,7 +171,7 @@ const Searchbox = () => {
             url: '/api/V1/pos-customermanagement/checkcustomer',
             headers: { 
               'Content-Type': 'application/json', 
-              'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
+              'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta', 
             },
             data: data
           };
@@ -343,7 +343,7 @@ const Searchbox = () => {
                 url: '/api/V1/pos-customermanagement/registerSignup',
                 headers: { 
                     'Content-Type': 'application/json', 
-                    'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
+                    'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta', 
                 },
                 data: data
             };
@@ -389,7 +389,7 @@ const Searchbox = () => {
             url: '/api/V1/pos-customermanagement/verifyemail',
             headers: { 
             'Content-Type': 'application/json', 
-            'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
+            'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta',
             },
             data: data
         };
@@ -558,7 +558,7 @@ const Searchbox = () => {
                 url: '/graphql',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop',
+                    'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta',
                 },
                 data: data
             };

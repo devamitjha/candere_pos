@@ -42,7 +42,7 @@ const Searchbox = () => {
                     url: `/api/V1/customers/search?searchCriteria[filterGroups][0][filters][0][field]=phone&searchCriteria[filterGroups][0][filters][0][value]=%25${searchCustomer}%25&searchCriteria[filterGroups][0][filters][0][condition_type]=like&searchCriteria[pageSize]=5`,
                     headers: { 
                         'Content-Type': 'application/json',
-                        'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop'
+                        'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta'
                     },
                 };
     
@@ -138,7 +138,7 @@ const Searchbox = () => {
             url: '/api/V1/pos-customermanagement/checkcustomer',
             headers: { 
               'Content-Type': 'application/json', 
-              'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
+              'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta', 
             },
             data: data
           };
@@ -261,7 +261,7 @@ const Searchbox = () => {
             url: '/api/V1/pos-customermanagement/registerSignup',
             headers: { 
               'Content-Type': 'application/json', 
-              'Authorization': 'Bearer 52al19ff4wb6z8hysbr9y36cmit3ueop', 
+              'Authorization': 'Bearer 9tcpn4uq9my8ymfj0qbdsscld9pqzlta', 
             },
             data: data
           };
